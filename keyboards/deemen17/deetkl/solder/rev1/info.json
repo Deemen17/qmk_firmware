@@ -1,9 +1,8 @@
 {
     "keyboard_name": "Deemen17 DeeTKL Solder Rev 1",
     "usb": {
-        "vid": "0xDEEE",
         "pid": "0xD875",
-        "device_version": "0.0.1"
+        "device_version": "1.0.0"
     },
     "features": {
         "bootmagic": true,
@@ -12,32 +11,16 @@
         "extrakey": true,
         "mousekey": true,
         "nkro": true,
-        "rgblight": true,
-        "encoder": true
-    },
-    "rgblight": {
-        "led_count": 22,
-        "pin": "GP0",
-        "hue_steps": 10,
-        "saturation_steps": 17,
-        "brightness_steps": 17,
-        "animations": {
-            "alternating": true,
-            "breathing": true,
-            "christmas": true,
-            "knight": true,
-            "rainbow_mood": true,
-            "rainbow_swirl": true,
-            "rgb_test": true,
-            "snake": true,
-            "static_gradient": true,
-            "twinkle": true
-        }
+        "encoder": true,
+        "rgb_matrix": true
     },
     "encoder": {
         "rotary": [
             { "pin_a": "GP11", "pin_b": "GP12", "resolution": 4}
         ]
+    },
+    "rgb_matrix": {
+        "driver": "WS2812"
     },
     "bootmagic": {
         "enabled": true,

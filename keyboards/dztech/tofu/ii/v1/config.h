@@ -80,7 +80,7 @@
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180 // limits maximum brightness of LEDs to 200 out of 255. If not defined maximum brightness is set to 255
 #    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_ALL
 #    define DRIVER_ADDR_1 0b1010000
-#    define DRIVER_ADDR_2 0b1011111
+#    define DRIVER_ADDR_2 0b1010011
 #    define DRIVER_COUNT 2
 #    define DRIVER_1_LED_TOTAL 46
 #    define DRIVER_2_LED_TOTAL 20

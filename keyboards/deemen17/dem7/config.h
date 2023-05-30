@@ -16,16 +16,9 @@
 
 #pragma once
 
-#include "config_common.h"
-
-/* key matrix size */
-#define MATRIX_ROWS 9
-#define MATRIX_COLS 8
-
 /* Forcing to use NKRO instead 6KRO */
 #define FORCE_NKRO
 
 /* RP2040 reset config*/
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP25
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U

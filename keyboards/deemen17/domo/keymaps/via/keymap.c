@@ -57,7 +57,7 @@ __attribute__((weak))
 void keyboard_post_init_user(void) {
     rgblight_setrgb_at(0, 0, 0, 0); // capslock
     rgblight_setrgb_at(0, 0, 0, 1); // scrolllock 
-    rgblight_set_effect_range(1, 2);
+    rgblight_set_effect_range(1, 1);
 }
 
 //Indicator light function
