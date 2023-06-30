@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "config_common.h"
+#define USB_SUSPEND_WAKEUP_DELAY 5000
 
 /* key matrix size */
 #define MATRIX_ROWS 5

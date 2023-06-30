@@ -16,26 +16,31 @@
 
 #pragma once
 
-#define USB_SUSPEND_WAKEUP_DELAY 5000
+#define I2C1_SDA_PIN GP10
+#define I2C1_SCL_PIN GP11
+#define I2C_DRIVER I2CD1
 
-/* Forcing to use NKRO instead 6KRO */
-#define FORCE_NKRO
-
-/* RP2040 reset config*/
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
 
+#define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_RAINBOW_SWIRL + 5
+#define RGBLIGHT_TIMEOUT 1800000 // Turn off underglow after 1 minutes without use
+
 #ifdef RGB_MATRIX_ENABLE
-// The pin connected to the data pin of the LEDs
-#    define RGB_DI_PIN GP19
-// The number of LEDs connected
-#    define RGB_MATRIX_LED_COUNT 41
-#    define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
+#    define DRIVER_ADDR_1 0b1010000
+#    define DRIVER_ADDR_2 0b1010011
+#    define DRIVER_COUNT 2
+#    define DRIVER_1_LED_TOTAL 43
+#    define DRIVER_2_LED_TOTAL 44
+#    define RGB_MATRIX_LED_COUNT (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)
+#    define RGB_MATRIX_TIMEOUT 1800000 // turn off LED RGB Matrix after 30 minutes without use
+#    define RGB_DISABLE_AFTER_TIMEOUT 1 // number of ticks to wait until disabling effects
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED  // turn off effects when suspended
 #    define RGB_MATRIX_LED_PROCESS_LIMIT (RGB_MATRIX_LED_COUNT + 4) / 5
 #    define RGB_MATRIX_LED_FLUSH_LIMIT 16
-#    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 220 // limits maximum brightness of LEDs to 200 out of 255. If not defined maximum brightness is set to 255
-#    define RGB_MATRIX_DEFAULT_VAL 150 // Sets the default brightness value, if none has been set
-#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_RAINBOW_MOVING_CHEVRON
+#    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 230 // limits maximum brightness of LEDs to 200 out of 255. If not defined maximum brightness is set to 255
+#    define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
+#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_ALL
 
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:

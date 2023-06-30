@@ -1,40 +1,41 @@
-/* Copyright 2023 Deemen17 <https://github.com/Deemen17>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+/*
+Copyright 2023 Deemen17
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 #pragma once
 
-#define USB_SUSPEND_WAKEUP_DELAY 5000
-
-/* Forcing to use NKRO instead 6KRO */
 #define FORCE_NKRO
 
-/* RP2040 reset config*/
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
+/* VIA related config */
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4
+
+// VIA KB level
+#define VIA_FIRMWARE_VERSION 1
+#define VIA_EEPROM_LAYOUT_OPTIONS_SIZE 2
 
 #ifdef RGB_MATRIX_ENABLE
 // The pin connected to the data pin of the LEDs
-#    define RGB_DI_PIN GP19
+#    define RGB_DI_PIN GP0
 // The number of LEDs connected
-#    define RGB_MATRIX_LED_COUNT 41
+#    define RGB_MATRIX_LED_COUNT 22
 #    define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
 #    define RGB_MATRIX_LED_PROCESS_LIMIT (RGB_MATRIX_LED_COUNT + 4) / 5
 #    define RGB_MATRIX_LED_FLUSH_LIMIT 16
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 220 // limits maximum brightness of LEDs to 200 out of 255. If not defined maximum brightness is set to 255
-#    define RGB_MATRIX_DEFAULT_VAL 150 // Sets the default brightness value, if none has been set
+#    define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
 #    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_RAINBOW_MOVING_CHEVRON
 
 // RGB Matrix Animation modes. Explicitly enabled
@@ -93,3 +94,4 @@
 #    define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 
 #endif // RGB_MATRIX_ENABLE
+

@@ -1,6 +1,24 @@
 #include QMK_KEYBOARD_H
 #include "encoder.c"
 
+enum my_keycodes {
+  UDG_TOG = SAFE_RANGE,
+};
+
+enum user_rgb_mode {
+    RGB_MODE_ALL,
+    RGB_MODE_NONE,
+};
+
+typedef union {
+    uint32_t raw;
+    struct {
+        uint8_t rgb_mode :8;
+    };
+} user_config_t;
+
+user_config_t user_config;
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[0] = LAYOUT(
@@ -13,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	),
 
 	[1] = LAYOUT(
-     KC_TRNS, KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,      KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS, KC_TRNS, KC_TRNS,
+     UDG_TOG, KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,      KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS, KC_TRNS, KC_TRNS,
 	 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
               KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -41,22 +59,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-//Initialize all RGB indicators to 'off'
-__attribute__((weak))
-void keyboard_post_init_user(void) {
-    rgblight_setrgb_at(0, 0, 0, 0); // capslock
-    rgblight_set_effect_range(1, 40);
-}
-
-//Indicator light function
-bool led_update_kb(led_t led_state) {
-    bool res = led_update_user(led_state);
-    if (res) {
-    if (led_state.caps_lock) {
-        rgblight_setrgb_at(255, 255, 255, 0);
-    } else {
-        rgblight_setrgb_at(0, 0, 0, 0);
-    }
-}
-    return res;
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case UDG_TOG:
+            if (record->event.pressed) {
+                switch (rgb_matrix_get_flags()) {
+                    case LED_FLAG_ALL: {
+                        rgb_matrix_set_flags(LED_FLAG_ALL);
+                        rgb_matrix_set_color_all(0, 0, 0);
+                        user_config.rgb_mode = RGB_MODE_NONE;
+                    }
+                    break;
+                    default: {
+                        rgb_matrix_set_flags(LED_FLAG_ALL);
+                        rgb_matrix_enable_noeeprom();
+                        user_config.rgb_mode = RGB_MODE_ALL;
+                    }
+                    break;
+                }
+                eeconfig_update_user(user_config.raw);
+            }
+            return false;
+	}
+    return true;
 }

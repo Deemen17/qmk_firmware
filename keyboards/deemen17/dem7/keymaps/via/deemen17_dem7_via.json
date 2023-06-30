@@ -3,7 +3,7 @@
     "vendorId":"0xDEEE",
     "productId":"0xDEE7",
     "keycodes": ["qmk_lighting"],
-    "menus": ["qmk_rgblight"],
+    "menus": ["qmk_rgb_matrix"],
     "matrix":{
        "rows":5,
        "cols":16
