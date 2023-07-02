@@ -1,4 +1,4 @@
-# Q"neatandtidy" DX65 Rev.1 
+# Q"neatandtidy" DX65
 
 ![DX65](https://i.imgur.com/BhET4HDh.png)
 

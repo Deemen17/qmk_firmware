@@ -1,4 +1,4 @@
-# Matrix Diagram for DX65 Rev1 
+# Matrix Diagram for DX65 Solder Rev.1 
 
 ```
                                                     ┌───────┐
