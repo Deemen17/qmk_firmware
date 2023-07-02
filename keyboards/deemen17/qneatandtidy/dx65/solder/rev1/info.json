@@ -171,7 +171,7 @@
     },
     "community_layouts": ["65_ansi_blocker_tsangan"],
     "layout_aliases": {
-        "LAYOUT_65_ansi_tsangan": "LAYOUT_65_ansi"
+        "LAYOUT_all": "LAYOUT_65_ansi_split_bs"
     },
     "layouts": {
         "LAYOUT_65_ansi_split_bs": {
