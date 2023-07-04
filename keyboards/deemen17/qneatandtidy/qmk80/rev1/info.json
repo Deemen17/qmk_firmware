@@ -7,7 +7,8 @@
     "usb": {
         "vid": "0xDEEE",
         "pid": "0x5246",
-        "device_version": "0.0.1"
+        "device_version": "0.0.1",
+        "suspend_wakeup_delay": 5000
     },
     "features": {
         "bootmagic": true,
@@ -16,20 +17,20 @@
         "extrakey": true,
         "mousekey": true,
         "nkro": true,
-        "rgblight": true
+        "rgblight": true,
+        "rgb_matrix": true
     },
     "diode_direction": "COL2ROW",
     "matrix_pins": {
         "cols": ["GP29", "GP28", "GP27", "GP26", "GP25", "GP24", "GP23", "GP22", "GP0", "GP1", "GP2", "GP3", "GP4", "GP5", "GP6", "GP7", "GP8"],
         "rows": ["GP21", "GP20", "GP19", "GP18", "GP17", "GP9"]
     },
-    "bootmagic": {
-        "enabled": true,
-        "matrix": [0, 0]
+    "ws2812": {
+        "driver": "vendor",
+        "pin": "GP12"
     },
     "rgblight": {
         "led_count": 31,
-        "pin": "GP12",
         "hue_steps": 10,
         "saturation_steps": 17,
         "brightness_steps": 17,
@@ -46,6 +47,55 @@
             "snake": true,
             "static_gradient": true,
             "twinkle": true
+        }
+    },
+    "rgb_matrix": {
+        "driver": "IS31FL3733",
+        "max_brightness": 180,
+        "animations": {
+            "alphas_mods": true,
+            "gradient_up_down": true,
+            "gradient_left_right": true,
+            "breathing": true,
+            "band_sat": true,
+            "band_val": true,
+            "band_pinwheel_sat": true,
+            "band_pinwheel_val": true,
+            "band_spiral_sat": true,
+            "band_spiral_val": true,
+            "cycle_all": true,
+            "cycle_left_right": true,
+            "cycle_up_down": true,
+            "rainbow_moving_chevron": true,
+            "cycle_out_in": true,
+            "cycle_out_in_dual": true,
+            "cycle_pinwheel": true,
+            "cycle_spiral": true,
+            "dual_beacon": true,
+            "rainbow_beacon": true,
+            "rainbow_pinwheels": true,
+            "raindrops": true,
+            "jellybean_raindrops": true,
+            "hue_breathing": true,
+            "hue_pendulum": true,
+            "hue_wave": true,
+            "pixel_rain": true,
+            "pixel_flow": true,
+            "pixel_fractal": true,
+            "typing_heatmap": true,
+            "digital_rain": true,
+            "solid_reactive_simple": true,
+            "solid_reactive": true,
+            "solid_reactive_wide": true,
+            "solid_reactive_multiwide": true,
+            "solid_reactive_cross": true,
+            "solid_reactive_multicross": true,
+            "solid_reactive_nexus": true,
+            "solid_reactive_multinexus": true,
+            "splash": true,
+            "multisplash": true,
+            "solid_splash": true,
+            "solid_multisplash": true
         }
     },
     "layouts": {
