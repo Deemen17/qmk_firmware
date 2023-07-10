@@ -16,8 +16,6 @@
 
 #pragma once
 
-#define USB_SUSPEND_WAKEUP_DELAY 5000
-
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 18

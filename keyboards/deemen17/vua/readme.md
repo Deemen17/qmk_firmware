@@ -1,6 +1,6 @@
 # VU.A
 
-![deemen17/vua](imgur.com image replace me!)
+![vua]()
 
 *A short description of the keyboard/project*
 
