@@ -5,8 +5,8 @@
 *A short description of the keyboard/project*
 
 * Keyboard Maintainer: [Deemen17](https://github.com/Deemen17)
-* Hardware Supported: De87fs
-* Hardware Availability: 
+* Hardware Supported: [De87fs Case Compatibility](https://docs.google.com/spreadsheets/d/1aB_izQgyF1t3ZgTmvq0tZfXh8F6tHjo0FwtIG-pWNFc/edit?usp=sharing)
+* Hardware Availability: [Deemen17 Works](https://www.facebook.com/deemen17)
 
 Make example for this keyboard (after setting up your build environment):
 
