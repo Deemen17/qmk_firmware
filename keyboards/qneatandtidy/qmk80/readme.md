@@ -10,13 +10,11 @@ A TKL PCB comes with per-key RGB LEDs and RGB underglow pre-soldered.
 
 Make example for this keyboard (after setting up your build environment):
 
-    make qneatandtidy/qmk80/hotswap:default
-    make qneatandtidy/qmk80/solder:default
+    make qneatandtidy/qmk80/rev1:default
 
 Flashing example for this keyboard:
 
-    make qneatandtidy/qmk80/hotswap:default:flash
-    make qneatandtidy/qmk80/solder:default:flash
+    make qneatandtidy/qmk80/rev1:default:flash
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
