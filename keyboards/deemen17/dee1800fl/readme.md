@@ -1,4 +1,4 @@
-# Deelab dee1800FL PCB
+# dee1800FL
 
 ![dee1800FL](updating image)
 
@@ -11,7 +11,7 @@ Layout available here: [KLE](http://www.keyboard-layout-editor.com/#/gists/2b73d
 
 Make example for this keyboard (after setting up your build environment):
 
-    qmk compile -j 0 -kb deelab/dee1800fl -km via
+    qmk compile -j 12 -kb deemen17/dee1800fl -km via
 
 ## Bootloader
 

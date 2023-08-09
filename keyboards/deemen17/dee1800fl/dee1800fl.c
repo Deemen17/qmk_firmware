@@ -1,4 +1,3 @@
-#include "dee1800fl.h"
 
 //Initialize all RGB indicators to 'off'
 __attribute__((weak))
