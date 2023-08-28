@@ -52,8 +52,8 @@
         }
     },
     "indicators": {
-        "caps_lock": "GP3",
-        "scroll_lock": "GP13"
+        "caps_lock": "GP13",
+        "scroll_lock": "GP3"
     },
     "community_layouts": [
         "tkl_f13_ansi_tsangan",
