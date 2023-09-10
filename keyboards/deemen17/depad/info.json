@@ -1,6 +1,6 @@
 {
     "manufacturer": "Deemen17",
-    "keyboard_name": "numpad",
+    "keyboard_name": "DePad",
     "maintainer": "Deemen17",
     "processor": "RP2040",
     "bootloader": "rp2040",

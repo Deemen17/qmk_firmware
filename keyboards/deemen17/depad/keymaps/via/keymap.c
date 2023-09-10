@@ -30,8 +30,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_P0,   KC_P0,   KC_PDOT, KC_PENT
     ),
 
-    [0] = LAYOUT_numpad_6x4(
-        QK_BOOT, KC_TRNS, MO(1),   KC_TRNS,
+    [1] = LAYOUT_numpad_6x4(
+        QK_BOOT, KC_TRNS, KC_TRNS, KC_TRNS,
 
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
