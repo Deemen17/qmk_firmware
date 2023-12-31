@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // VIA KB level
 #define VIA_FIRMWARE_VERSION 1
 #define VIA_EEPROM_LAYOUT_OPTIONS_SIZE 2
+#define VIA_EEPROM_CUSTOM_CONFIG_SIZE 9
 
 #ifdef RGB_MATRIX_ENABLE
 // The pin connected to the data pin of the LEDs
