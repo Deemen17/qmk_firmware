@@ -1,0 +1,9 @@
+{
+    "manufacturer": "Deemen17",
+    "maintainer": "Deemen17",
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+    "usb": {
+        "vid": "0xDEEE"
+    }
+}
