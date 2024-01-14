@@ -1,11 +1,11 @@
-# pheromeow
+# Pheromeow
 
 ![pheromeow](imgur.com image replace me!)
 
 *A short description of the keyboard/project*
 
 * Keyboard Maintainer: [Aighnosuv](https://github.com/yourusername)
-* Hardware Supported: *The PCBs, controllers supported*
+* Hardware Supported: atmega32u4
 * Hardware Availability: *Links to where you can find this hardware*
 
 Make example for this keyboard (after setting up your build environment):
