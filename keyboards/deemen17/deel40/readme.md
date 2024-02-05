@@ -1,12 +1,12 @@
-# deemen17/deel40
+# Deel40
 
 ![deemen17/deel40](imgur.com image replace me!)
 
 *A short description of the keyboard/project*
 
 * Keyboard Maintainer: [Deemen17](https://github.com/Deemen17)
-* Hardware Supported: *The PCBs, controllers supported*
-* Hardware Availability: *Links to where you can find this hardware*
+* Hardware Supported: Deel40, RP2040
+* Hardware Availability: Private Commission
 
 Make example for this keyboard (after setting up your build environment):
 

@@ -73,7 +73,7 @@ typedef struct _fave_config_t {
     indicator_config caps;
 } fave_config;
 
-fave_config fave;
+keyboard_indicators indicators;
 
 void eeconfig_init_user(void) {
     // Default values
