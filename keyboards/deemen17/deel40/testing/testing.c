@@ -17,6 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "eeconfig.h"
 #include "quantum.h"
+#include "print.h"
+#include "rgb_matrix.h"
 
 // PERSISTENT MEMORY (PMEM) CONFIGURATION ----------------------------------------------------------
 #ifdef VIA_ENABLE
@@ -78,7 +80,7 @@ void eeconfig_init_kb(void) {
     indicators.ind2.h = 0;
     indicators.ind2.s = 0;
     indicators.ind2.v = 150;
-    indicators.ind2.func = 4;
+    indicators.ind2.func = 1;
     indicators.ind2.index = 1;
     indicators.ind2.enabled = true;
 
@@ -86,7 +88,7 @@ void eeconfig_init_kb(void) {
     indicators.ind3.h = 0;
     indicators.ind3.s = 0;
     indicators.ind3.v = 150;
-    indicators.ind3.func = 5;
+    indicators.ind3.func = 4;
     indicators.ind3.index = 2;
     indicators.ind3.enabled = true;
 
@@ -144,7 +146,7 @@ bool set_indicator(indicator_config indicator) {
         case 5:
         case 6:
         {
-            if ( IS_LAYER_ON( (int)(indicator.func) - 3  ) ) return true;
+            if ( IS_LAYER_ON( (int)(indicator.func) - 3 ) ) return true;
         }
         default:
         {
@@ -340,3 +342,37 @@ void via_custom_value_command_kb(uint8_t *data, uint8_t length) {
     *command_id = id_unhandled;
 }
 #endif // VIA_ENABLE
+
+// Blink typing
+void update_rgb_while_typing(void) {
+    // Seed the random number generator
+    srand(timer_read32());
+
+    // Generate random values for Red, Green, and Blue components
+    uint8_t red = rand() % 256;
+    uint8_t green = rand() % 256;
+    uint8_t blue = rand() % 256;
+
+    // Set the RGB color for the 1st LED
+    uprintf("Random RGB: %3u:%3u:%3u", red, green, blue);
+    rgb_matrix_set_color( 0, red, green, blue);
+}
+
+// Hook function to update RGB while typing
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+    // If console is enabled, it will print the matrix position and status of each key pressed
+    #ifdef CONSOLE_ENABLE
+        uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+    #endif 
+
+    // Check if a key is being pressed or released
+    if (record->event.pressed) {
+        // Update the RGB color while typing
+        print("Pressed, changing to random RGB\n");
+        update_rgb_while_typing();
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR); // Example animation mode
+        rgb_matrix_set_color(0, 255, 255, 255); // Overdrive color (white)
+    }
+    return true;
+}
