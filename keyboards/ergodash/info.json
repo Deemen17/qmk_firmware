@@ -17,8 +17,8 @@
         "enabled": true
     },
     "matrix_pins": {
-        "rows": ["GP8", "GP10", "GP11", "GP12", "GP13"],
-        "cols": ["GP29", "GP28", "GP27", "GP26", "GP25", "GP24", "GP23"]
+        "rows": ["GP6", "GP8", "GP9", "GP10", "GP11"],
+        "cols": ["GP29", "GP28", "GP27", "GP26", "GP25", "GP23", "GP22"]
     },
     "rgblight": {
         "led_count": 24,
