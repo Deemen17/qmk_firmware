@@ -1,0 +1,143 @@
+{
+    "manufacturer": "Deemen17",
+    "keyboard_name": "Deel40 Remake For Reel40 PCB",
+    "maintainer": "Deemen17",
+    "processor": "STM32F103",
+    "bootloader": "uf2boot",
+    "usb": {
+        "vid": "0xDE17",
+        "pid": "0x40AA",
+        "device_version": "0.0.1"
+    },
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true,
+        "rgb_matrix": true
+    },
+    "diode_direction": "COL2ROW",
+    "matrix_pins": {
+        "rows": ["A3", "A4", "B12", "B10"],
+        "cols": ["B11", "B13", "B6", "B7", "B14", "B15", "A9", "A10", "B5", "A15", "B3", "B8", "B9"]
+    },
+    "ws2812": {
+        "driver": "pwm",
+        "pin": "B4"
+    },
+    "rgb_matrix": {
+        "driver": "ws2812",
+        "layout":[
+            { "flags": 8, "x": 0, "y": 0 },
+            { "flags": 8, "x": 1, "y": 0 },
+            { "flags": 8, "x": 2, "y": 0 }
+        ],
+        "sleep": true,
+        "animations": {
+            "band_pinwheel_sat": true,
+            "band_pinwheel_val": true,
+            "band_sat": true,
+            "band_spiral_sat": true,
+            "band_spiral_val": true,
+            "band_val": true,
+            "breathing": true,
+            "cycle_all": true,
+            "cycle_left_right": true,
+            "cycle_out_in": true,
+            "cycle_out_in_dual": true,
+            "cycle_pinwheel": true,
+            "cycle_spiral": true,
+            "cycle_up_down": true,
+            "digital_rain": true,
+            "dual_beacon": true,
+            "gradient_left_right": true,
+            "gradient_up_down": true,
+            "hue_breathing": true,
+            "hue_pendulum": true,
+            "hue_wave": true,
+            "jellybean_raindrops": true,
+            "multisplash": true,
+            "pixel_flow": true,
+            "pixel_fractal": true,
+            "pixel_rain": true,
+            "rainbow_beacon": true,
+            "rainbow_moving_chevron": true,
+            "rainbow_pinwheels": true,
+            "raindrops": true,
+            "solid_multisplash": true,
+            "solid_reactive": true,
+            "solid_reactive_cross": true,
+            "solid_reactive_multicross": true,
+            "solid_reactive_multinexus": true,
+            "solid_reactive_multiwide": true,
+            "solid_reactive_nexus": true,
+            "solid_reactive_simple": true,
+            "solid_reactive_wide": true,
+            "solid_splash": true,
+            "splash": true,
+            "typing_heatmap": true
+        }
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                { "matrix": [0, 0], "x": 0.28999999999999915, "y": 0.4600000000000009 },
+                { "matrix": [0, 1], "x": 1.2899999999999991, "y": 0.4600000000000009 },
+                { "matrix": [0, 2], "x": 2.4399999999999995, "y": 0 },
+                { "matrix": [0, 3], "x": 3.4399999999999995, "y": 0 },
+                { "matrix": [0, 4], "x": 4.4399999999999995, "y": 0 },
+                { "matrix": [0, 5], "x": 5.4399999999999995, "y": 0 },
+
+                { "matrix": [0, 6], "x": 6.9399999999999995, "y": 2.1 },
+                { "matrix": [0, 7], "x": 7.9399999999999995, "y": 2.1 },
+                { "matrix": [0, 8], "x": 8.94, "y": 2.1 },
+                { "matrix": [0, 9], "x": 9.94, "y": 2.1 },
+                { "matrix": [0, 10], "x": 11.239999999999997, "y": 0.4600000000000009 },
+                { "matrix": [0, 11], "x": 12.239999999999997, "y": 0.4600000000000009 },
+                { "matrix": [0, 12], "x": 13.239999999999997, "y": 0.4600000000000009 },
+
+                { "matrix": [1, 0], "w": 1.26, "x": 0.14999999999999947, "y": 1.4700000000000009 },
+                { "matrix": [1, 1], "x": 1.4000000000000004, "y": 1.4700000000000009 },
+                { "matrix": [1, 2], "x": 2.6899999999999995, "y": 1 },
+                { "matrix": [1, 3], "x": 3.6899999999999995, "y": 1 },
+                { "matrix": [1, 4], "x": 4.6899999999999995, "y": 1 },
+                { "matrix": [1, 5], "x": 5.6899999999999995, "y": 1 },
+
+                { "matrix": [1, 6], "x": 7.1899999999999995, "y": 3.1 },
+                { "matrix": [1, 7], "x": 8.19, "y": 3.1 },
+                { "matrix": [1, 8], "x": 9.19, "y": 3.1 },
+                { "matrix": [1, 9], "x": 10.19, "y": 3.1 },
+                { "matrix": [1, 10], "x": 11.63, "y": 1.4700000000000009 },
+                { "matrix": [1, 12], "w": 1.75, "x": 12.63, "y": 1.4700000000000009 },
+
+                { "matrix": [2, 0], "w": 1.75, "x": 0, "y": 2.4800000000000004 },
+                { "matrix": [2, 1], "x": 1.75, "y": 2.4800000000000004 },
+                { "matrix": [2, 2], "x": 3.1899999999999995, "y": 2 },
+                { "matrix": [2, 3], "x": 4.1899999999999995, "y": 2 },
+                { "matrix": [2, 4], "x": 5.1899999999999995, "y": 2 },
+                { "matrix": [2, 5], "x": 6.1899999999999995, "y": 2 },
+
+                { "matrix": [2, 6], "x": 6.6899999999999995, "y": 4.1000000000000005 },
+                { "matrix": [2, 7], "x": 7.6899999999999995, "y": 4.1000000000000005 },
+                { "matrix": [2, 8], "x": 8.69, "y": 4.1000000000000005 },
+                { "matrix": [2, 9], "x": 9.69, "y": 4.1000000000000005 },                
+                { "matrix": [2, 10], "x": 11.269999999999998, "y": 2.4800000000000004 },
+                { "matrix": [2, 11], "x": 12.269999999999998, "y": 2.4800000000000004 },
+                { "matrix": [2, 12], "w": 1.25, "x": 13.269999999999998, "y": 2.4800000000000004 },
+
+                { "matrix": [3, 0], "w": 1.25, "x": 0.10999999999999943, "y": 3.49 },
+                { "matrix": [3, 2], "w": 1.25, "x": 1.3599999999999994, "y": 3.49 },
+                { "matrix": [3, 3], "w": 1.25, "x": 3.9399999999999995, "y": 3 },
+                { "matrix": [3, 4], "w": 2, "x": 5.1899999999999995, "y": 3 },
+
+                { "matrix": [3, 7], "w": 2.25, "x": 6.6899999999999995, "y": 5.1000000000000005 },
+                { "matrix": [3, 8], "w": 1.25, "x": 8.94, "y": 5.1000000000000005 },
+                { "matrix": [3, 10], "x": 11.269999999999998, "y": 3.49 },
+                { "matrix": [3, 11], "x": 12.269999999999998, "y": 3.49 },
+                { "matrix": [3, 12], "x": 13.269999999999998, "y": 3.49 }
+            ]
+        }
+    }
+}
