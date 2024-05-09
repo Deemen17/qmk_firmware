@@ -37,12 +37,14 @@
         },
         "led_count": 22,
         "max_brightness": 240,
-        "sleep": true
+        "sleep": false
     },
     "usb": {
         "vid": "0xDE17",
         "pid": "0x60F0",
-        "device_version": "0.0.1"
+        "device_version": "0.0.1",
+        "force_nkro": true,
+        "suspend_wakeup_delay": 5
     },
     "ws2812": {
         "driver": "vendor",
