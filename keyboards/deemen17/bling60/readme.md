@@ -1,24 +1,20 @@
-# De60fs
+# Bling60
 
-![De60fs](https://i.imgur.com/7hpYaoX.jpg)
+![Bling60](https://i.imgur.com/C4Cyb36.png)
 
-A GH60 form factor PCB for 60% keyboards. Uses a Left USB Type C connector or 5 JST SH positions for daughter board.
+A GH60 form factor PCB for 60% keyboards. Uses a Left USB Type C connector or 4 JST SH positions for daughter board.
 
 * Keyboard Maintainer: [Deemen17](https://github.com/Deemen17)
-<<<<<<< HEAD
-* Hardware Supported: De60fs PCB, De60fs Oring Edition PCB, De60 Tsangan Edition PCB
-=======
-* Hardware Supported: RP2040, De60fs PCB, De60fs Oring Edition PCB, De60 Tsangan Edition PCB
->>>>>>> dca7c3f86ff70a6a410fc86ad9961aa21512702a
+* Hardware Supported: Bling60 PCB
 * Hardware Availability: [Deemen17 Works](https://www.facebook.com/deemen17)
 
 Make example for this keyboard (after setting up your build environment):
 
-    make deemen17/de60fs:default
+    make deemen17/bling60:default
 
 Flashing example for this keyboard:
 
-    make deemen17/de60fs:default:flash
+    make deemen17/bling60:default:flash
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 

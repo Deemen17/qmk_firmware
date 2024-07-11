@@ -1,4 +1,4 @@
-/* Copyright 2023 Deemen17 <https://github.com/Deemen17>
+/* Copyright 2022 QMK
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,8 @@
 
 #pragma once
 
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
+#include_next <mcuconf.h>
 
-#define RP2040_FLASH_GENERIC_03H
+
+#undef STM32_SPI_USE_SPI1
+#define STM32_SPI_USE_SPI1 TRUE
