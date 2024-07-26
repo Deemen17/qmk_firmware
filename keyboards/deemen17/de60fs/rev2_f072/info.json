@@ -13,9 +13,6 @@
         "debounce_type": "sym_eager_pk"
     },
     "features": {
-        "bootmagic": true,
-        "extrakey": true,
-        "mousekey": true,
         "nkro": true,
         "rgblight": true
     },

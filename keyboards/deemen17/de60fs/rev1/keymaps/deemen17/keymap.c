@@ -39,6 +39,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  static bool aHeld = false;
+  static bool dHeld = false;
+  switch (keycode) {
+    case KC_A:
+      aHeld = record->event.pressed;
+      if (dHeld && aHeld) {
+          unregister_code(KC_D);
+      } else if (dHeld && !aHeld){
+          unregister_code(KC_A);
+          register_code(KC_D);
+          return false; // don't send original key pressed
+      }
+      return true;
+    case KC_D:
+      dHeld = record->event.pressed;
+      if (aHeld && dHeld) {
+          unregister_code(KC_A);
+      } else if (aHeld && !dHeld){
+          unregister_code(KC_D);
+          register_code(KC_A);
+          return false; // don't send original key pressed
+      }
+      return true;
+    default:
+      return true; // Process all other keycodes normally
+  }
+}
+
 const rgblight_segment_t PROGMEM caps_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {17, 1, HSV_WHITE}
 );
@@ -57,3 +86,4 @@ bool led_update_user(led_t led_state) {
     rgblight_set_layer_state(0, led_state.caps_lock);
     return true;
 }
+

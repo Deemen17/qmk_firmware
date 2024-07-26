@@ -1,0 +1,38 @@
+{
+    "features": {
+        "nkro": true,
+        "rgblight": true
+    },
+    "matrix_pins": {
+        "rows": ["B6", "B5", "A1", "B15", "A8"],
+        "cols": ["A10", "A0", "B14", "B13", "B12", "B11", "B10", "B1", "B0", "A6", "A5", "A4", "A3", "A2"]
+    },
+    "diode_direction": "COL2ROW",
+    "indicators": {
+        "caps_lock": "A9"
+    },
+    "ws2812": {
+        "pin": "A7",
+        "driver": "spi"
+    },
+    "processor": "STM32F103",
+    "bootloader": "uf2boot",
+    "board": "STM32_F103_STM32DUINO",
+    "rgblight": {
+        "led_count": 30,
+        "max_brightness": 220,
+        "sleep": true,
+        "animations": {
+            "alternating": true,
+            "breathing": true,
+            "christmas": true,
+            "knight": true,
+            "rainbow_mood": true,
+            "rainbow_swirl": true,
+            "rgb_test": true,
+            "snake": true,
+            "static_gradient": true,
+            "twinkle": true
+        }
+    }
+}
