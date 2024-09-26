@@ -1,6 +1,6 @@
 # deemen17/de80
 
-![deemen17/de80](https://i.imgur.com/)
+![deemen17/de80](https://i.imgur.com/oZvFM0G.png)
 
 The DE80 is a portable TKL PCB that features a compact A87 form factor, dual USB Type C ports (breakable), seven JST SH 4P 1.0 ports, two FPC ports, and compatibility with both F12 and F13 footprints, making it suitable for use with a variety of TKL boards.
 
