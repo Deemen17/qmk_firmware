@@ -1,4 +1,4 @@
-# deemen17/de80
+# DE80
 
 ![deemen17/de80](https://i.imgur.com/oZvFM0G.png)
 
