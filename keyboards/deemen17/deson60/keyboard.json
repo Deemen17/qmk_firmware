@@ -25,8 +25,8 @@
     "url": "",
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0x0000",
-        "vid": "0xFEED"
+        "pid": "0x60D5",
+        "vid": "0xDE17"
     },
     "rgblight": {
         "saturation_steps": 8,
