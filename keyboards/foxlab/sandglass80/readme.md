@@ -1,6 +1,6 @@
-# time80
+# sandglass80
 
-![time80](https://i.imgur.com/8HpYStPl.jpg)
+![sandglass80](https://i.imgur.com/)
 
 Time is an intricate custom keyboard kit from Fox Lab, a group of
 Chinese designers focused on making maximizing the potential for
@@ -13,11 +13,11 @@ Time is the custom keyboard with the most number of parts in existence (so far).
 
 Make example for this keyboard (after setting up your build environment):
 
-    make foxlab/time80:default
+    make foxlab/sandglass80:default
 
 Flashing example for this keyboard:
 
-    make foxlab/time80:default:flash
+    make foxlab/sandglass80:default:flash
 
 **Reset Key**: There are no reset switches or pads. Remember to add a `QK_BOOT`
 key on your keymap for future endeavors.
