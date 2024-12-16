@@ -22,14 +22,15 @@
     },
     "diode_direction": "COL2ROW",
     "backlight": {
-        "pin": "B5"
+        "pin": "B5",
+        "on_state": 0,
+        "default": {
+            "on": false
+        }
     },
     "indicators": {
         "caps_lock" : "B9"
     },
-    "processor": "STM32F303",
-    "bootloader": "stm32-dfu",
-    "board": "QMK_PROTON_C",
     "layouts": {
         "LAYOUT_tkl_ansi_ergo": {
             "layout": [
