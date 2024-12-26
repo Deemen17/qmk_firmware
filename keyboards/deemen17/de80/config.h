@@ -16,5 +16,8 @@
 
 #pragma once
 
-#define WS2812_SPI_DRIVER SPID2
+#define WS2812_SPI_DRIVER SPID2 
+#define WS2812_SPI_MOSI_PAL_MODE 5 // Pin "alternate function", see the respective datasheet for the appropriate values for your MCU. default: 5
 #define WS2812_SPI_USE_CIRCULAR_BUFFER
+
+#define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RAINBOW_SWIRL + 5)

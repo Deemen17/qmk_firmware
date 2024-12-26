@@ -1,4 +1,4 @@
-/* Copyright 2022 QMK
+/* Copyright 2024 Deemen17 <https://github.com/Deemen17>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,13 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-
-#include_next <mcuconf.h>
-
-
-#undef STM32_SPI_USE_SPI2
-#define STM32_SPI_USE_SPI2 TRUE
-
-#undef STM32_I2C_USE_I2C1
-#define STM32_I2C_USE_I2C1 TRUE
+#define I2C_DRIVER I2CD1
+#define I2C1_SCL_PIN B8
+#define I2C1_SDA_PIN B9

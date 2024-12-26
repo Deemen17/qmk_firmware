@@ -34,10 +34,10 @@
             "knight": true,
             "rainbow_mood": true,
             "rainbow_swirl": true,
-            "rgb_test": true,
+            "rgb_test": false,
             "snake": true,
             "static_gradient": true,
-            "twinkle": true
+            "twinkle": false
         },
         "led_count": 40,
         "max_brightness": 250,
