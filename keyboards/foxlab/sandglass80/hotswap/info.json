@@ -13,21 +13,13 @@
         "command": false,
         "console": false,
         "extrakey": true,
-        "mousekey": true,
-        "backlight": true
+        "mousekey": true
     },
     "matrix_pins": {
         "cols": ["B13", "A10", "B12", "B14", "B15", "A8", "A9", "B11", "A6", "A7", "B0", "B1", "B2", "B10", "C15", "C14", "C13", "B8"],
-        "rows": ["A15", "A4", "A3", "A2", "A1", "A0"]
+        "rows": ["A15", "A4", "A3", "A2", "A1", "B5"]
     },
     "diode_direction": "COL2ROW",
-    "backlight": {
-        "pin": "B5",
-        "on_state": 0,
-        "default": {
-            "on": false
-        }
-    },
     "indicators": {
         "caps_lock" : "B9"
     },
