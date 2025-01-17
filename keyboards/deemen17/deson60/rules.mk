@@ -1,0 +1,1 @@
+DEFAULT_FOLDER = deemen17/deson60/hs_tsangan
