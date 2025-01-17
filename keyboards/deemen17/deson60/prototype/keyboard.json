@@ -1,32 +1,12 @@
 {
-    "manufacturer": "Deemen17",
-    "keyboard_name": "DESON60",
-    "maintainer": "Deemen17",
-    "bootloader": "uf2boot",
-    "diode_direction": "COL2ROW",
-    "features": {
-        "bootmagic": true,
-        "command": false,
-        "console": false,
-        "extrakey": true,
-        "mousekey": true,
-        "nkro": true,
-        "rgblight": true,
-        "rgb_matrix": true
-    },
-    "build" : {
-        "lto" : true
+    "keyboard_name": "DESON60 PROTOTYPE",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x60D5"
     },
     "matrix_pins": {
         "cols": ["B1", "B0", "A7", "B12", "B13", "A15", "B8", "C15", "C14", "C13", "B9", "B5", "B4", "B3"],
         "rows": ["A10", "A9", "A8", "B14", "A6"]
-    },
-    "processor": "STM32F103",
-    "url": "",
-    "usb": {
-        "device_version": "1.0.0",
-        "pid": "0x60D5",
-        "vid": "0xDE17"
     },
     "rgblight": {
         "saturation_steps": 8,
@@ -101,7 +81,6 @@
         },
         "driver": "is31fl3733",
         "react_on_keyup": true,
-        "sleep": true,
         "layout": [
             {"flags": 1, "matrix": [0, 0], "x": 0, "y": 0},
             {"flags": 1, "matrix": [0, 1], "x": 16, "y": 0},
