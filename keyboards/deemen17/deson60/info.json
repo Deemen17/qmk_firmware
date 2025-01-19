@@ -19,5 +19,10 @@
     "processor": "STM32F103",
     "usb": {
         "vid": "0xDE17"
+    },
+    "eeprom": {
+        "wear_leveling": {
+            "backing_size": 4096
+        }
     }
 }
