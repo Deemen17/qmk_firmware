@@ -70,13 +70,16 @@ const is31fl3733_led_t PROGMEM g_is31fl3733_leds[IS31FL3733_LED_COUNT] = {
     { 0, SW10_CS15, SW11_CS15, SW12_CS15 }
 };
 
-bool rgb_matrix_indicators_kb(void) {
-    if (!rgb_matrix_indicators_user()) {
-        return false;
-    }
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-        rgb_matrix_set_color(30, 0xFF, 0xFF, 0xFF);
+        for (uint8_t i = led_min; i < led_max; i++) {
+            if (g_led_config.flags[i] & LED_FLAG_KEYLIGHT) {
+                rgb_matrix_set_color(i, RGB_WHITE);
+            }
+        }
+        rgb_matrix_set_color(29, RGB_WHITE);
     }
     return false;
 }
+
 #endif
