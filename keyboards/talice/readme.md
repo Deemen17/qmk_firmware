@@ -1,4 +1,4 @@
-# talice
+# Talice
 
 ![talice](imgur.com image replace me!)
 
