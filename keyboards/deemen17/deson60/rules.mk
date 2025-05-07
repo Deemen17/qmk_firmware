@@ -1,1 +1,1 @@
-DEFAULT_FOLDER = deemen17/deson60/hs_tsangan
+DEFAULT_FOLDER = deemen17/deson60/rev2
