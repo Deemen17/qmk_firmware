@@ -2,7 +2,7 @@
 
 ![deemen17/deson60](imgur.com image replace me!)
 
-This is a 60% PCB with per-key RGB LEDs, ungerglow RGB LEDs and supports only ANSI Tsangan layout (split right shift and backspace).
+A 60% PCB with per-key RGB LEDs, ungerglow RGB LEDs and supports only ANSI Tsangan layout.
 
 * Keyboard Maintainer: [Pham Duc Minh](https://github.com/Deemen17)
 * Hardware Supported: DESON60 PCB
