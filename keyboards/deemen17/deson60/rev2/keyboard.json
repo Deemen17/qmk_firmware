@@ -20,14 +20,10 @@
             "static_gradient": true,
             "alternating": true,
             "twinkle": true
-        },
-        "default": {
-            "animation": "rainbow_swirl"
         }
     },
     "ws2812": {
-        "pin": "B5",
-        "driver": "spi"
+        "pin": "B5"
     },
     "rgb_matrix": {
         "animations": {
