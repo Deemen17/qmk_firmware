@@ -1,9 +1,5 @@
 #include "quantum.h"
 
-void board_init(void) {
-    AFIO->MAPR |= AFIO_MAPR_SPI1_REMAP;
-}
-
 #ifdef RGB_MATRIX_ENABLE
 const is31fl3733_led_t PROGMEM g_is31fl3733_leds[IS31FL3733_LED_COUNT] = {
     { 0, SW11_CS16, SW10_CS16, SW12_CS16 }, // LED1
@@ -80,7 +76,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 rgb_matrix_set_color(i, RGB_WHITE);
             }
         }
-        rgb_matrix_set_color(29, RGB_WHITE);
+        rgb_matrix_set_color(28, RGB_WHITE);
     }
     return false;
 }
