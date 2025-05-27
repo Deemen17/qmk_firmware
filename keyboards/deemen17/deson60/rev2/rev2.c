@@ -71,14 +71,15 @@ const is31fl3733_led_t PROGMEM g_is31fl3733_leds[IS31FL3733_LED_COUNT] = {
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-        for (uint8_t i = led_min; i < led_max; i++) {
-            if (g_led_config.flags[i] & LED_FLAG_KEYLIGHT) {
-                rgb_matrix_set_color(i, RGB_WHITE);
-            }
-        }
         rgb_matrix_set_color(28, RGB_WHITE);
     }
-    return false;
+    return true;
+}
+
+// Enable indicator support in RGB Matrix
+void keyboard_post_init_kb(void) {
+    rgb_matrix_set_flags(LED_FLAG_INDICATOR);
+    keyboard_post_init_user();
 }
 
 #endif
