@@ -439,6 +439,10 @@ void wireless_send_nkro(report_nkro_t *report) {
     static report_keyboard_t temp_report_keyboard                 = {0};
     uint8_t                  wls_report_nkro[MD_SND_CMD_NKRO_LEN] = {0};
 
+    if(MD_STATE_PAIRING == *md_getp_state()){
+        return;
+    }
+
 #ifdef NKRO_ENABLE
     if (report != NULL) {
         report_nkro_t temp_report_nkro = *report;
