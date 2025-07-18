@@ -81,7 +81,7 @@ void lpwr_exti_init(void) {
         if (row_pins[i] != NO_PIN) {
             setPinInputHigh(row_pins[i]);
             waitInputPinDelay();
-            palEnableLineEvent(row_pins[i], PAL_EVENT_MODE_BOTH_EDGES);
+            palEnableLineEvent(row_pins[i], PAL_EVENT_MODE_FALLING_EDGE);
         }
     }
 #elif DIODE_DIRECTION == COL2ROW
@@ -96,7 +96,7 @@ void lpwr_exti_init(void) {
         if (col_pins[i] != NO_PIN) {
             setPinInputHigh(col_pins[i]);
             waitInputPinDelay();
-            palEnableLineEvent(col_pins[i], PAL_EVENT_MODE_BOTH_EDGES);
+            palEnableLineEvent(col_pins[i], PAL_EVENT_MODE_FALLING_EDGE);
         }
     }
 #endif
