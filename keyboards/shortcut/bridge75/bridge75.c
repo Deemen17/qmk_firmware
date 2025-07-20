@@ -439,7 +439,7 @@ void wireless_send_nkro(report_nkro_t *report) {
     static report_keyboard_t temp_report_keyboard                 = {0};
     uint8_t                  wls_report_nkro[MD_SND_CMD_NKRO_LEN] = {0};
 
-    if(MD_STATE_PAIRING == *md_getp_state()){
+    if (MD_STATE_PAIRING == *md_getp_state()) {
         return;
     }
 
@@ -453,10 +453,10 @@ void wireless_send_nkro(report_nkro_t *report) {
             key_count += __builtin_popcount(temp_report_nkro.bits[i]);
         }
 
-        /*
-         * Use NKRO for sending when more than 6 keys are pressed
-         * to solve the issue of the lack of a protocol flag in wireless mode.
-         */
+        //
+        // Use NKRO for sending when more than 6 keys are pressed
+        // to solve the issue of the lack of a protocol flag in wireless mode.
+        //
 
         for (uint8_t i = 0; i < key_count; i++) {
             uint8_t usageid;
