@@ -12,7 +12,7 @@ typedef union {
         uint8_t flag : 1;
         uint8_t devs : 3;
         uint8_t deep_sleep_fix : 1;
-        uint8_t rgb_dont_sleep_on_usb_suspend : 1;
+        uint8_t rgb_dont_sleep : 1;
     };
 } confinfo_t;
 confinfo_t confinfo;
@@ -63,7 +63,7 @@ void eeconfig_init_kb(void) {
     confinfo.flag                          = true;
     confinfo.devs                          = DEVS_USB;
     confinfo.deep_sleep_fix                = true;
-    confinfo.rgb_dont_sleep_on_usb_suspend = false;
+    confinfo.rgb_dont_sleep = false;
     eeconfig_update_kb(confinfo.raw);
     eeconfig_init_user();
 }
@@ -95,6 +95,10 @@ void keyboard_post_init_kb(void) {
     wireless_devs_change(!confinfo.devs, confinfo.devs, false);
     post_init_timer = timer_read32();
 
+    if (confinfo.rgb_dont_sleep) {
+        set_rgb_matrix_timeout(0);
+    }
+
     keyboard_post_init_user();
 }
 
@@ -108,11 +112,7 @@ void usb_power_disconnect(void) {
 }
 
 void suspend_power_down_kb(void) {
-    if (!confinfo.rgb_dont_sleep_on_usb_suspend && confinfo.devs == DEVS_USB && gpio_read_pin(BT_CABLE_PIN)) {
-        rgb_matrix_disable_noeeprom();
-        gpio_write_pin_high(LED_POWER_EN_PIN);
-    }
-
+    gpio_write_pin_high(LED_POWER_EN_PIN);
     suspend_power_down_user();
 }
 
@@ -257,8 +257,14 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
         }
         case LT(0, USBSLP): {
             if (!record->tap.count && record->event.pressed) {
-                confinfo.rgb_dont_sleep_on_usb_suspend = !confinfo.rgb_dont_sleep_on_usb_suspend;
+                confinfo.rgb_dont_sleep = !confinfo.rgb_dont_sleep;
                 eeconfig_update_kb(confinfo.raw);
+
+                if (confinfo.rgb_dont_sleep) {
+                    set_rgb_matrix_timeout(0);
+                } else {
+                    set_rgb_matrix_timeout(RGB_MATRIX_TIMEOUT);
+                }
             }
             return false;
         }
@@ -398,7 +404,7 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
 #endif
 
 #ifdef USBSLP_INDEX
-        if (confinfo.rgb_dont_sleep_on_usb_suspend) {
+        if (confinfo.rgb_dont_sleep) {
             blink(USBSLP_INDEX, RGB_ADJ_WHITE, blink_slow);
         }
 #endif
