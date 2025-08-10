@@ -14,7 +14,8 @@ typedef union {
 } confinfo_t;
 confinfo_t confinfo;
 
-uint32_t post_init_timer = 0x00;
+uint32_t        post_init_timer         = 0x00;
+static uint32_t last_device_change_time = 0x00;
 
 // Possible LED states.
 enum { LED_OFF = 0, LED_ON = 1, LED_BLINK_SLOW = 2, LED_BLINK_FAST = 3 };
@@ -76,7 +77,7 @@ uint32_t led_blink_callback(uint32_t trigger_time, void *cb_arg) {
         led_blink_state[confinfo.devs] = LED_BLINK_FAST;
     } else if (confinfo.devs != DEVS_USB && *md_getp_state() != MD_STATE_CONNECTED) {
         led_blink_state[confinfo.devs] = LED_BLINK_SLOW;
-    } else {
+    } else if (last_device_change_time && timer_elapsed32(last_device_change_time) <= WIRELESS_LED_CONNECT_CONFIRM_TIME) {
         led_blink_state[confinfo.devs] = LED_ON;
     }
 
@@ -259,7 +260,8 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 
 void wireless_devs_change_kb(uint8_t old_devs, uint8_t new_devs, bool reset) {
     if (confinfo.devs != wireless_get_current_devs()) {
-        confinfo.devs = wireless_get_current_devs();
+        confinfo.devs           = wireless_get_current_devs();
+        last_device_change_time = timer_read32();
         eeconfig_update_kb(confinfo.raw);
     }
 }
