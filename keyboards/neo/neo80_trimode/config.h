@@ -9,6 +9,11 @@
  * greater than 3 seconds we select that device and go into pairing mode.
  */
 #define WIRELESS_TAPPING_TERM 3000
+/*
+ * After a connection, light the LED under the number key associated with the
+ * device for 5 seconds, then turn the LED off to save power.
+ */
+#define WIRELESS_LED_CONNECT_CONFIRM_TIME 5000
 
 /* LEDS */
 #define LED_BLINK_FAST_PERIOD_MS 300
