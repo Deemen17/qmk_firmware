@@ -3,8 +3,7 @@
 // Copyright 2024 Wind (@yelishang)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include QMK_KEYBOARD_H
-#include "wireless.h"
+#include "bridge75.h"
 
 typedef union {
     uint32_t raw;
