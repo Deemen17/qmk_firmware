@@ -20,7 +20,6 @@ uint8_t blink_index  = 0;
 bool    blink_fast   = true;
 bool    blink_slow   = true;
 bool    rgb_override = false;
-bool    mac_mode     = false;
 
 // Expose md_send_devinfo to support the Bridge75 Bluetooth naming quirk
 // See the readme.md for more information about the quirk.
@@ -30,24 +29,6 @@ void md_send_devinfo(const char *name);
 // wireless_task processing and to prevent sleep when smsg_is_busy.
 void wireless_task(void);
 bool smsg_is_busy(void);
-
-// We use per-key tapping term to allow the wireless keys to have a much
-// longer tapping term, therefore a longer hold, to match the default
-// firmware behaviour.
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(0, KC_1):
-            return WIRELESS_TAPPING_TERM;
-        case LT(0, KC_2):
-            return WIRELESS_TAPPING_TERM;
-        case LT(0, KC_3):
-            return WIRELESS_TAPPING_TERM;
-        case LT(0, KC_4):
-            return WIRELESS_TAPPING_TERM;
-        default:
-            return TAPPING_TERM;
-    }
-}
 
 void eeconfig_init_kb(void) {
     confinfo.devs = DEVS_USB;
@@ -109,7 +90,7 @@ void suspend_wakeup_init_kb(void) {
 }
 
 bool lpwr_is_allow_timeout_hook(void) {
-    if (wireless_get_current_devs() == DEVS_USB || smsg_is_busy()) {
+    if (smsg_is_busy()) {
         return false;
     }
 
@@ -231,29 +212,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         }
-#ifdef VIA_ENABLE
-        case LT(0, KC_NO): {
-            // Rather than using layers the default firmware uses dynamic key
-            // remapping to switch between WIN (Default) and MAC modes
-            if (!record->tap.count && record->event.pressed) {
-                if (dynamic_keymap_get_keycode(0, 5, 1) == KC_LALT) {
-                    // Switch to WIN mode (Default)
-                    dynamic_keymap_set_keycode(0, 5, 1, KC_LGUI);
-                    dynamic_keymap_set_keycode(0, 5, 2, KC_LALT);
-                    dynamic_keymap_set_keycode(0, 5, 9, KC_RALT);
-                    mac_mode = false;
-                } else if (dynamic_keymap_get_keycode(0, 5, 1) == KC_LGUI) {
-                    // Switch to MAC mode
-                    dynamic_keymap_set_keycode(0, 5, 1, KC_LALT);
-                    dynamic_keymap_set_keycode(0, 5, 2, KC_LGUI);
-                    dynamic_keymap_set_keycode(0, 5, 9, KC_RGUI);
-                    mac_mode = true;
-                }
-            } else if (record->event.pressed) {
-            }
-            return false;
-        }
-#endif
     }
 
     return true;
@@ -320,6 +278,7 @@ void battery_percent_changed_kb(uint8_t level) {
 }
 
 bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
+    uint8_t current_layer = get_highest_layer(default_layer_state | layer_state);
     blink_index = blink_index + 1;
     blink_fast  = (blink_index % 64 == 0) ? !blink_fast : blink_fast;
     blink_slow  = (blink_index % 128 == 0) ? !blink_slow : blink_slow;
@@ -329,7 +288,7 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     }
 
     // When in Layer 1 show the UX
-    if (get_highest_layer(default_layer_state | layer_state) == 1) {
+    if ((current_layer == 1) || (current_layer == 3)) {
         // Set all mapped keys to orange
         uint8_t layer = get_highest_layer(layer_state);
         for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
@@ -337,7 +296,11 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
                 uint8_t index = g_led_config.matrix_co[row][col];
 
                 if (index >= led_min && index < led_max && index != NO_LED && keymap_key_to_keycode(layer, (keypos_t){col, row}) > KC_TRNS) {
-                    rgb_matrix_set_color(index, RGB_ADJ_ORANGE);
+                    if (current_layer == 3) {
+                        rgb_matrix_set_color(index, RGB_ADJ_BLUE);
+                    } else {
+                        rgb_matrix_set_color(index, RGB_ADJ_ORANGE);
+                    }
                 }
             }
         }
@@ -360,12 +323,6 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
             }
         }
 
-#ifdef WIN_INDEX
-        if (mac_mode) {
-            blink(WIN_INDEX, RGB_ADJ_WHITE, blink_slow);
-        }
-#endif
-
         // Show active connection
         connection_indicators();
     } else if (confinfo.devs != DEVS_USB && *md_getp_state() != MD_STATE_CONNECTED) {
@@ -378,17 +335,6 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     }
 
     return true;
-}
-
-// Temporary work around for WS2812 pin init
-void board_init(void) {
-    gpio_set_pin_output(WS2812_DI_PIN);
-    gpio_write_pin_low(WS2812_DI_PIN);
-}
-
-// Force MCU reset on unhandled_exception
-void _unhandled_exception(void) {
-    mcu_reset();
 }
 
 // Exprimental change to fix duplicate and hung key presses on wireless

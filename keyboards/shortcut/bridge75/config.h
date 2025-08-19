@@ -4,13 +4,6 @@
 
 #pragma once
 
-/*
- * Specific tapping term for wireless configuration. If the key is held for
- * less than 3 seconds we select that device for the active connection. If
- * greater than 3 seconds we select that device and go into pairing mode.
- */
-#define WIRELESS_TAPPING_TERM 3000
-
 /* COLORS adjusted for RGB_MATRIX_MAXIMUM_BRIGHTNESS of 104 */
 #define RGB_ADJ_BLUE    0x00, 0x00, 0xC8
 #define RGB_ADJ_GREEN   0x00, 0xC8, 0x00
