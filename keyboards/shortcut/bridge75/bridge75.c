@@ -19,7 +19,6 @@ uint8_t bat_level    = 0;
 uint8_t blink_index  = 0;
 bool    blink_fast   = true;
 bool    blink_slow   = true;
-bool    rgb_override = false;
 
 // Expose md_send_devinfo to support the Bridge75 Bluetooth naming quirk
 // See the readme.md for more information about the quirk.
@@ -82,7 +81,6 @@ void suspend_power_down_kb(void) {
 
 void suspend_wakeup_init_kb(void) {
     gpio_write_pin_low(LED_POWER_EN_PIN);
-    rgb_matrix_reload_from_eeprom();
 
     wireless_devs_change(wireless_get_current_devs(), wireless_get_current_devs(), false);
     suspend_wakeup_init_user();
@@ -147,26 +145,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
-        case MO(1): {
-            // Enable RGB temporarily when FN is pressed to show indicators
-            if (record->event.pressed && !rgb_matrix_is_enabled()) {
-                rgb_override = true;
-                rgb_matrix_enable_noeeprom();
-                rgb_matrix_sethsv_noeeprom(HSV_OFF);
-            } else if (rgb_override) {
-                rgb_override = false;
-                rgb_matrix_reload_from_eeprom();
-            }
-            return true;
-        }
-        case RGB_TOG: {
-            // Restore indicators if in overriden state
-            if (rgb_override) {
-                rgb_override = false;
-                rgb_matrix_reload_from_eeprom();
-            }
-            return true;
-        }
         case EE_CLR: {
             // Only reset the eeprom on keypress to avoid repeating eeprom
             // clear if held down.
