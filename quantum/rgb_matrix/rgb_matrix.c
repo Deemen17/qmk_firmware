@@ -90,9 +90,6 @@ static last_hit_t last_hit_buffer;
 const uint8_t k_rgb_matrix_split[2] = RGB_MATRIX_SPLIT;
 #endif
 
-// Nonstandard HACK
-uint32_t rgb_matrix_timeout = RGB_MATRIX_TIMEOUT;
-
 EECONFIG_DEBOUNCE_HELPER(rgb_matrix, rgb_matrix_config);
 
 void eeconfig_force_flush_rgb_matrix(void) {
@@ -379,7 +376,9 @@ void rgb_matrix_task(void) {
     // Ideally we would also stop sending zeros to the LED driver PWM buffers
     // while suspended and just do a software shutdown. This is a cheap hack for now.
     bool suspend_backlight = suspend_state ||
-                             ((rgb_matrix_timeout > 0) && (last_input_activity_elapsed() > rgb_matrix_timeout)) ||
+#if RGB_MATRIX_TIMEOUT > 0
+                             (last_input_activity_elapsed() > (uint32_t)RGB_MATRIX_TIMEOUT) ||
+#endif // RGB_MATRIX_TIMEOUT > 0
                              false;
 
     uint8_t effect = suspend_backlight || !rgb_matrix_config.enable ? 0 : rgb_matrix_config.mode;
@@ -738,8 +737,4 @@ void rgb_matrix_set_flags(led_flags_t flags) {
 
 void rgb_matrix_set_flags_noeeprom(led_flags_t flags) {
     rgb_matrix_set_flags_eeprom_helper(flags, false);
-}
-
-void set_rgb_matrix_timeout(uint32_t timeout) {
-    rgb_matrix_timeout = timeout;
 }

@@ -286,6 +286,3 @@ extern last_hit_t g_last_hit_tracker;
 #ifdef RGB_MATRIX_FRAMEBUFFER_EFFECTS
 extern uint8_t g_rgb_frame_buffer[MATRIX_ROWS][MATRIX_COLS];
 #endif
-
-// This is a non-standard hack to allow the RGB timeout to be overridden
-void set_rgb_matrix_timeout(uint32_t timeout);

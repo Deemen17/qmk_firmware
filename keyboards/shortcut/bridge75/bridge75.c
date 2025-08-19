@@ -8,10 +8,7 @@
 typedef union {
     uint32_t raw;
     struct {
-        uint8_t flag : 1;
         uint8_t devs : 3;
-        uint8_t deep_sleep_fix : 1;
-        uint8_t rgb_dont_sleep : 1;
     };
 } confinfo_t;
 confinfo_t confinfo;
@@ -47,20 +44,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return WIRELESS_TAPPING_TERM;
         case LT(0, KC_4):
             return WIRELESS_TAPPING_TERM;
-        case LT(0, SLP_FIX):
-            return WIRELESS_TAPPING_TERM;
-        case LT(0, USBSLP):
-            return WIRELESS_TAPPING_TERM;
         default:
             return TAPPING_TERM;
     }
 }
 
 void eeconfig_init_kb(void) {
-    confinfo.flag                          = true;
-    confinfo.devs                          = DEVS_USB;
-    confinfo.deep_sleep_fix                = true;
-    confinfo.rgb_dont_sleep = false;
+    confinfo.devs = DEVS_USB;
     eeconfig_update_kb(confinfo.raw);
     eeconfig_init_user();
 }
@@ -91,10 +81,6 @@ void keyboard_post_init_kb(void) {
     wait_ms(10);
     wireless_devs_change(!confinfo.devs, confinfo.devs, false);
     post_init_timer = timer_read32();
-
-    if (confinfo.rgb_dont_sleep) {
-        set_rgb_matrix_timeout(0);
-    }
 
     keyboard_post_init_user();
 }
@@ -245,26 +231,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         }
-        case LT(0, SLP_FIX): {
-            if (!record->tap.count && record->event.pressed) {
-                confinfo.deep_sleep_fix = !confinfo.deep_sleep_fix;
-                eeconfig_update_kb(confinfo.raw);
-            }
-            return false;
-        }
-        case LT(0, USBSLP): {
-            if (!record->tap.count && record->event.pressed) {
-                confinfo.rgb_dont_sleep = !confinfo.rgb_dont_sleep;
-                eeconfig_update_kb(confinfo.raw);
-
-                if (confinfo.rgb_dont_sleep) {
-                    set_rgb_matrix_timeout(0);
-                } else {
-                    set_rgb_matrix_timeout(RGB_MATRIX_TIMEOUT);
-                }
-            }
-            return false;
-        }
 #ifdef VIA_ENABLE
         case LT(0, KC_NO): {
             // Rather than using layers the default firmware uses dynamic key
@@ -394,18 +360,6 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
             }
         }
 
-#ifdef S_INDEX
-        if (confinfo.deep_sleep_fix) {
-            blink(S_INDEX, RGB_ADJ_RED, blink_slow);
-        }
-#endif
-
-#ifdef USBSLP_INDEX
-        if (confinfo.rgb_dont_sleep) {
-            blink(USBSLP_INDEX, RGB_ADJ_WHITE, blink_slow);
-        }
-#endif
-
 #ifdef WIN_INDEX
         if (mac_mode) {
             blink(WIN_INDEX, RGB_ADJ_WHITE, blink_slow);
@@ -530,8 +484,7 @@ void wireless_send_nkro(report_nkro_t *report) {
     md_send_nkro(wls_report_nkro);
 }
 
+// Deep Sleep hack, reboot on wake
 void lpwr_clock_enable_user(void) {
-    if (confinfo.deep_sleep_fix) {
-        mcu_reset();
-    }
+    mcu_reset();
 }
