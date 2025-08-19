@@ -47,7 +47,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return WIRELESS_TAPPING_TERM;
         case LT(0, KC_4):
             return WIRELESS_TAPPING_TERM;
-        case LT(0, KC_S):
+        case LT(0, SLP_FIX):
             return WIRELESS_TAPPING_TERM;
         case LT(0, USBSLP):
             return WIRELESS_TAPPING_TERM;
@@ -245,7 +245,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         }
-        case LT(0, KC_S): {
+        case LT(0, SLP_FIX): {
             if (!record->tap.count && record->event.pressed) {
                 confinfo.deep_sleep_fix = !confinfo.deep_sleep_fix;
                 eeconfig_update_kb(confinfo.raw);
