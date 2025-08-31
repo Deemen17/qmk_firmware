@@ -41,3 +41,6 @@
 //#define WLS_KEYBOARD_REPORT_KEYS 5
 #define WLS_KEYBOARD_REPORT_KEYS KEYBOARD_REPORT_KEYS
 #define LPWR_TIMEOUT 300000 // 5 Minutes
+
+// Reset on wake deep sleep fix
+#define WB32_WAKE_RESET_HACK

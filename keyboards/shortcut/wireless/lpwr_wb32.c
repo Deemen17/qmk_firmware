@@ -118,6 +118,10 @@ void lpwr_clock_enable_user(void) {}
 
 void lpwr_clock_enable(void) {
 
+    #ifdef WB32_WAKE_RESET_HACK
+    NVIC_SystemReset();
+    #endif
+
     __early_init();
 
     rccEnableEXTI();

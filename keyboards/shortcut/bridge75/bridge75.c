@@ -154,11 +154,11 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         }
-        case OU_USB: {
+        case KC_USB: {
             wireless_devs_change(wireless_get_current_devs(), DEVS_USB, false);
             return false;
         }
-        case LT(0, KC_1): {
+        case LT(0, KC_BT1): {
             if (record->tap.count && record->event.pressed) {
                 wireless_devs_change(wireless_get_current_devs(), DEVS_BT1, false);
             } else if (record->event.pressed && *md_getp_state() != MD_STATE_PAIRING) {
@@ -166,7 +166,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         }
-        case LT(0, KC_2): {
+        case LT(0, KC_BT2): {
             if (record->tap.count && record->event.pressed) {
                 wireless_devs_change(wireless_get_current_devs(), DEVS_BT2, false);
             } else if (record->event.pressed && *md_getp_state() != MD_STATE_PAIRING) {
@@ -174,7 +174,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         }
-        case LT(0, KC_3): {
+        case LT(0, KC_BT3): {
             if (record->tap.count && record->event.pressed) {
                 wireless_devs_change(wireless_get_current_devs(), DEVS_BT3, false);
             } else if (record->event.pressed && *md_getp_state() != MD_STATE_PAIRING) {
@@ -182,7 +182,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         }
-        case LT(0, KC_4): {
+        case LT(0, KC_2G4): {
             if (record->tap.count && record->event.pressed) {
                 wireless_devs_change(wireless_get_current_devs(), DEVS_2G4, false);
             } else if (record->event.pressed && *md_getp_state() != MD_STATE_PAIRING) {
@@ -408,7 +408,8 @@ void wireless_send_nkro(report_nkro_t *report) {
     md_send_nkro(wls_report_nkro);
 }
 
+// Temporarily moved to lpws_wb32.c
 // Deep Sleep hack, reboot on wake
-void lpwr_clock_enable_user(void) {
-    mcu_reset();
-}
+//void lpwr_clock_enable_user(void) {
+//    mcu_reset();
+//}
