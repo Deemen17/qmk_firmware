@@ -88,7 +88,7 @@ void suspend_wakeup_init_kb(void) {
 }
 
 bool lpwr_is_allow_timeout_hook(void) {
-    if (smsg_is_busy()) {
+    if (smsg_is_busy() || gpio_read_pin(BT_CABLE_PIN)) {
         return false;
     }
 
@@ -285,7 +285,7 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
 
         if (gpio_read_pin(BT_CABLE_PIN) && !gpio_read_pin(BT_CHARGE_PIN)) {
             // Check if we are plugged in and charging
-            blink(ESCAPE_INDEX, RGB_ADJ_RED, blink_slow);
+            rgb_matrix_set_color(ESCAPE_INDEX, RGB_ADJ_WHITE);
         } else {
             if (bat_level > 90) {
                 rgb_matrix_set_color(ESCAPE_INDEX, RGB_ADJ_GREEN);
