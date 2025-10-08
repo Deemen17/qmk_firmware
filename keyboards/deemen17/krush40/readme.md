@@ -2,8 +2,6 @@
 
 ![deemen17/krush40]()
 
-
-
 * Keyboard Maintainer: [Deemen17](https://github.com/Deemen17)
 * Hardware Supported: Nuxros Krush40 PCB w/ STM32F103 MCU
 * Hardware Availability: Private Commission
