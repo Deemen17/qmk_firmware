@@ -1,0 +1,53 @@
+{
+    "manufacturer": "DEEMEN17 WORKS",
+    "keyboard_name": "MKVN2025 VIA",
+    "maintainer": "Deemen17",
+    "processor": "STM32F072",
+    "bootloader": "stm32-dfu",
+    "features": {
+        "bootmagic": true,
+        "extrakey": true,
+        "mousekey": true,
+        "encoder": true
+    },
+    "matrix_pins": {
+        "direct": [
+            ["B0", "A7", "B2",  "B1"],
+            ["A4", "A3", "B11", "B10"],
+            ["C14","C13", "A15", "B3"]
+        ]
+    },
+    "encoder": {
+        "rotary": [
+            { "pin_a": "A5", "pin_b": "A6" }
+        ]
+    },
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x2025",
+        "vid": "0xDE17"
+    },
+    "layout_aliases": {
+        "LAYOUT_all": "LAYOUT"
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix": [0, 0], "x": 0, "y": 0}, 
+                {"matrix": [0, 1], "x": 0, "y": 1},
+                {"matrix": [0, 2], "x": 0, "y": 2}, 
+                {"matrix": [0, 3], "x": 0, "y": 3},
+
+                {"matrix": [1, 0], "x": 1, "y": 0}, 
+                {"matrix": [1, 1], "x": 1, "y": 1}, 
+                {"matrix": [1, 2], "x": 1, "y": 2}, 
+                {"matrix": [1, 3], "x": 1, "y": 3},
+
+                {"matrix": [2, 0], "x": 2, "y": 0}, 
+                {"matrix": [2, 1], "x": 2, "y": 1}, 
+                {"matrix": [2, 2], "x": 2, "y": 2}, 
+                {"matrix": [2, 3], "x": 2, "y": 3}
+            ]
+        }
+    }
+}
