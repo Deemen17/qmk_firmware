@@ -1,0 +1,24 @@
+{
+    "features": {
+        "rgblight": true
+    },
+    "rgblight": {
+        "default": {
+            "animation": "rainbow_swirl"
+        },
+        "animations": {
+            "alternating": true,
+            "breathing": true,
+            "christmas": true,
+            "knight": true,
+            "rainbow_mood": true,
+            "rainbow_swirl": true,
+            "snake": true,
+            "static_gradient": true,
+            "twinkle": true
+        },
+        "led_count": 100,
+        "max_brightness": 250,
+        "sleep": true
+    },
+}
