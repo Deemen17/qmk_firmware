@@ -54,7 +54,7 @@
         "driver": "ws2812",
         "led_process_limit": 4,
         "led_flush_limit": 26,
-        "max_brightness": 220,
+        "max_brightness": 200,
         "sleep": true,
         "layout": [
             {"flags": 2, "x": 136, "y": 64},
