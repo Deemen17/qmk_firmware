@@ -2,7 +2,8 @@
     "manufacturer": "DE",
     "keyboard_name": "DE Cherry G80 1800",
     "maintainer": "Deemen17",
-    "bootloader": "uf2boot",
+    "processor": "STM32F411",
+    "bootloader": "stm32-dfu",
     "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
@@ -11,14 +12,19 @@
         "nkro": true
     },
     "matrix_pins": {
-        "rows": ["A8", "A10", "A9", "B11", "C14", "C13"],
-        "cols": ["B14", "B13", "B12", "B2", "B1", "B0", "A7", "A6", "A5", "A4", "A3", "A2", "A1", "A0", "A15", "B7", "B6"]
+        "rows": [
+            "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN"
+        ],
+        "cols": [
+            "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", 
+            "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN"
+        ]
     },
-    "processor": "STM32F103",
     "usb": {
         "vid": "0xDE17",
         "pid": "0x18F1",
-        "device_version": "1.0.0"
+        "device_version": "1.0.0",
+        "suspend_wakeup_delay": 200
     },
     "indicators": {
         "on_state": 0,
