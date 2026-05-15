@@ -25,7 +25,8 @@
         },
         "default": {
             "animation": "rainbow_swirl"
-        }
+        },
+        "max_brightness": 220
     },
     "ws2812": {
         "pin": "B15",
