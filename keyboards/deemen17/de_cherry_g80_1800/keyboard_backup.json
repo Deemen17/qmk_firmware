@@ -2,6 +2,8 @@
     "manufacturer": "DE",
     "keyboard_name": "DE Cherry G80 1800",
     "maintainer": "Deemen17",
+    "processor": "STM32F411",
+    "bootloader": "stm32-dfu",
     "development_board": "blackpill_f411",
     "diode_direction": "COL2ROW",
     "features": {
