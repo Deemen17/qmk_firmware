@@ -2,7 +2,9 @@
     "manufacturer": "DE",
     "keyboard_name": "DE Cherry G80 1800",
     "maintainer": "Deemen17",
-    "development_board": "blackpill_f411",
+    "build": {
+        "debounce_type": "sym_defer_g"
+    },
     "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
@@ -10,47 +12,11 @@
         "mousekey": true,
         "nkro": true
     },
+    "bootmagic": {
+        "matrix": [0, 8]
+    },
     "dynamic_keymap": {
         "layer_count": 2
-    },
-    "matrix_pins": {
-        "rows": [
-            "B5",
-            "B6",
-            "B7",
-            "B8",
-            "B9",
-            "C15",
-            "C14",
-            "C13"
-        ],
-        "cols": [
-            "B2",
-            "B10",
-            "A0",
-            "A8",
-            "A9",
-            "A10",
-            "B15",
-            "B14",
-            "B13",
-            "A3",
-            "B12",
-            "A5",
-            "A6",
-            "A7",
-            "A2",
-            "A1",
-            "B1",
-            "B0",
-            "A4"
-        ]
-    },
-    "indicators": {
-        "on_state": 0,
-        "caps_lock": "B3",
-        "scroll_lock": "B4",
-        "num_lock": "A15"
     },
     "usb": {
         "vid": "0xDE17",
@@ -58,7 +24,6 @@
         "device_version": "1.0.0",
         "suspend_wakeup_delay": 200
     },
-    
     "layout_aliases": {
         "LAYOUT_all": "LAYOUT_1800_ansi_7u_wkl"
     },
@@ -122,8 +87,8 @@
                 { "matrix": [2,18], "label":"U", "x":7.5, "y":3 },
                 { "matrix": [3,11], "label":"I", "x":8.5, "y":3 },
                 { "matrix": [2,11], "label":"O", "x":9.5, "y":3 },
-                { "matrix": [2,12], "label":"P", "x":10.5, "y":3 },
-                { "matrix": [3,12], "label":"[", "x":11.5, "y":3 },
+                { "matrix": [3,12], "label":"P", "x":10.5, "y":3 },
+                { "matrix": [2,12], "label":"[", "x":11.5, "y":3 },
                 { "matrix": [3,13], "label":"]", "x":12.5, "y":3 },
                 { "matrix": [2,13], "label":"|", "x":13.5, "y":3, "w":1.5 },
 
@@ -169,13 +134,13 @@
                 { "matrix": [6,16], "label":"P1", "x":15.5, "y":5 },
                 { "matrix": [6,14], "label":"P2", "x":16.5, "y":5 },
                 { "matrix": [7,14], "label":"P3", "x":17.5, "y":5 },
-                { "matrix": [1,16], "label":"PEnter", "x":18.5, "y":5, "h":2 },
+                { "matrix": [1,15], "label":"PEnter", "x":18.5, "y":5, "h":2 },
 
-                { "matrix": [7,1], "label":"LCtrl", "x":0, "y":6, "w":1.5 },
-                { "matrix": [7,2], "label":"LAlt", "x":1.5, "y":6, "w":1.5 },
+                { "matrix": [7,3], "label":"LCtrl", "x":11.5, "y":6, "w":1.5 },
+                { "matrix": [7,4], "label":"LAlt", "x":10, "y":6, "w":1.5 },
                 { "matrix": [7,8], "label":"Space", "x":3, "y":6, "w":7 },
-                { "matrix": [7,4], "label":"RAlt", "x":10, "y":6, "w":1.5 },
-                { "matrix": [7,3], "label":"RCtrl", "x":11.5, "y":6, "w":1.5 },
+                { "matrix": [7,2], "label":"RAlt", "x":1.5, "y":6, "w":1.5 },
+                { "matrix": [7,1], "label":"RCtrl", "x":0, "y":6, "w":1.5 },
 
                 { "matrix": [7,13], "label":"Left", "x":13.25, "y":6.25 },
                 { "matrix": [7,10], "label":"Down", "x":14.25, "y":6.25 },

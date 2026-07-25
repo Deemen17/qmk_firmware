@@ -1,0 +1,45 @@
+{
+    "bootloader": "uf2boot",
+    "processor": "STM32F103",
+    "debounce": 5,
+    "ghost": true,
+    "matrix_pins": {
+        "rows": [
+            "B0",
+            "B1",
+            "B10",
+            "B11",
+            "B15",
+            "B14",
+            "B13",
+            "B12"
+        ],
+        "cols": [
+            "B8",
+            "B9",
+            "A8",
+            "A3",
+            "A4",
+            "A2",
+            "C15",
+            "C14",
+            "C13",
+            "A1",
+            "A0",
+            "B3",
+            "B4",
+            "B5",   
+            "A10",
+            "A9",
+            "B7",
+            "B6",
+            "A15"
+        ]
+    },
+    "indicators" :{
+        "on_state" : 0,
+        "num_lock" :"A5",
+        "caps_lock" :"A6",
+        "scroll_lock" :"A7"
+    }
+}
