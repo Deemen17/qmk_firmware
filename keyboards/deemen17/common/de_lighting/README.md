@@ -36,7 +36,7 @@ than the default build-time channel capacity.
 ## EEPROM
 
 Configuration is versioned. Version 1 stores the config version, channel count,
-and descriptor-indexed channel enablement in the user EEPROM datablock. Future migrations should be added in
+and descriptor-indexed channel enablement in a 40-byte user EEPROM datablock enabled by `rules.mk`. Future migrations should be added in
 `de_lighting_eeprom_load()` without exposing raw globals to keyboard code.
 
 ## VIA
