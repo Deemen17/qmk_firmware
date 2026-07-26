@@ -42,8 +42,9 @@ and descriptor-indexed channel enablement in a 40-byte user EEPROM datablock ena
 ## VIA
 
 VIA integration is an adapter. Route `via_custom_value_command_kb()` to
-`de_lighting_via_custom_value_command()`. VIA command payloads use
-`DE_LIGHTING_VIA_CHANNEL_ID` and operate on channel indexes.
+`de_lighting_via_custom_value_command()`. VIA custom menus should use
+`["id_custom_channel", 0, value_id]`, where `value_id` is the one-based
+channel index (`1` = channel 0, `2` = channel 1, etc.).
 
 ## Extending
 
