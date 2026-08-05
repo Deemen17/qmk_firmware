@@ -9,6 +9,8 @@
         "rows": ["B11", "B10", "B2", "B1", "A3"]
     },
     "rgblight": {
+        "max_brightness": 222,
+        "sleep": true,
         "led_count": 27,
         "animations": {
             "breathing": true,
